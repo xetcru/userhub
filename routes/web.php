@@ -1,23 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\WebUserController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-//-------------------------------
+// for dev
+/*
 Route::get('/test', function () {
     return 'It works!';
 });
@@ -38,4 +29,11 @@ Route::get('/user-test', function () {
         'password' => bcrypt('password'),
     ]);
     return 'User created successfully!';
-});
+});//*/
+
+//
+Route::get('/login', function () {
+    return 'This is a placeholder for login route.';
+})->name('login');
+//
+Route::resource('users', WebUserController::class);
